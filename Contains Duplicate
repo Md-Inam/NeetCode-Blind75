@@ -1,0 +1,31 @@
+Problem
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+Key Insight
+A set stores only unique elements
+If duplicates exist → set size < array size
+
+Approach (Set)
+Convert array to a set
+Compare lengths
+
+Sol-
+class Solution(object):
+    def containsDuplicate(self, nums):
+        a=len(nums)
+        b=set(nums)
+        if a==len(b):
+            return False
+        else:
+            return True
+
+Alternate (HashMap)
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
