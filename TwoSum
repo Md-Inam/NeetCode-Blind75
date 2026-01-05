@@ -1,0 +1,33 @@
+Problem Statement
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to the target.
+Constraints:
+Each input has exactly one solution.
+You cannot use the same element twice.
+Return in any order.
+
+Sol-
+class Solution(object):
+    def twoSum(self, nums, target):
+        Hash = {}
+        for i, num in enumerate(nums):
+            difference = target - num
+            if difference in Hash:
+                return [Hash[difference], i]
+            Hash[num] = i
+
+Logic
+Initialize an empty hashmap:
+Hash = {}
+
+Loop through the array with index and value:
+for i, num in enumerate(nums):
+
+Compute the needed number (difference) to reach target:
+difference = target - num
+
+Check if difference is already in hashmap:
+if difference in Hash:
+    return [Hash[difference], i]  # indices of the two numbers
+
+If not found, store the current number and its index:
+Hash[num] = i
