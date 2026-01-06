@@ -1,0 +1,27 @@
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+Example 1:
+Input: s = "anagram", t = "nagaram"
+Output: true
+Example 2:
+Input: s = "rat", t = "car"
+Output: false
+A1)
+s = list(s)
+t = list(t)
+s.sort()
+t.sort()
+for i in range(len(s)):
+    if s[i] != t[i]:
+        return False
+return True
+
+A2)
+s = list(s)
+t = list(t)
+s.sort()
+t.sort()
+for subchar, subchars in zip(s, t):
+    if subchar != subchars:
+        return False
+return True
