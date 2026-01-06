@@ -25,3 +25,8 @@ for subchar, subchars in zip(s, t):
     if subchar != subchars:
         return False
 return True
+
+A3)
+        s=list(s)
+        t=list(t)
+        return sorted(s)!=sorted(t)
