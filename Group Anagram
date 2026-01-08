@@ -1,10 +1,9 @@
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
 A1)
-s = ["ate", "bat", "eat", "nat", "tan", "tea"]
+strs = ["ate", "bat", "eat", "nat", "tan", "tea"]
 Hash = {}
-
-for word in s:
+for word in strs:
     sort = sorted(word)
     key = "".join(sort)
 
@@ -12,9 +11,7 @@ for word in s:
         Hash[key].append(word)
     else:
         Hash[key] = [word]
-
 print(list(Hash.values()))
-
 
 A2)
 strs = ["eat","tea","tan","ate","nat","bat"]
