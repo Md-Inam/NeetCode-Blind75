@@ -1,0 +1,11 @@
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+A2)
+strs = ["eat","tea","tan","ate","nat","bat"]
+Heap = {} 
+for word in strs:
+    key = ''.join(sorted(word)) 
+    if key not in Heap:
+        Heap[key] = []
+    Heap[key].append(word)
+print(list(Heap.values())) 
