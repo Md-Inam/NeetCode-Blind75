@@ -9,3 +9,7 @@ for word in strs:
         Heap[key] = []
     Heap[key].append(word)
 print(list(Heap.values())) 
+
+
+append() → only works on existing lists
+New key → you must assign a list
