@@ -27,6 +27,14 @@ only alphanumeric characters
 all in lowercase
 This is correct for the palindrome problem.
 
+x.lower() for x in s if x.isalnum()
+Translation:
+loop through characters
+check x.isalnum()
+only then do x.lower()
+add it to the string being built
+
+
 Version 2
 clean = "".join(x for x in s if x.lower().isalnum())
 What happens per character:
@@ -35,7 +43,14 @@ Check if that lowercase version is alphanumeric
 If yes → append the original x, not the lowercase one
 That means:
 Uppercase letters stay uppercase
-You never actually normalize case
+
+
+In contrast:
+x for x in s if x.lower().isalnum()
+condition checks a transformed value
+but expression keeps the original
+mismatch → logical bug
+
 Example:
 s = "Aa"
 Version 1:
