@@ -15,3 +15,33 @@ clean="".join(x.lower() for x in s if x.isalnum())
 A2)
 cleaned = ''.join(filter(str.isalnum, s.lower()))
 return cleaned == cleaned[::-1]
+
+
+Version 1
+clean = "".join(x.lower() for x in s if x.isalnum())
+What happens per character x:
+Check if x is alphanumeric
+If yes → lowercase it → keep it
+This produces:
+only alphanumeric characters
+all in lowercase
+This is correct for the palindrome problem.
+
+Version 2
+clean = "".join(x for x in s if x.lower().isalnum())
+What happens per character:
+Lowercase x
+Check if that lowercase version is alphanumeric
+If yes → append the original x, not the lowercase one
+That means:
+Uppercase letters stay uppercase
+You never actually normalize case
+Example:
+s = "Aa"
+Version 1:
+"a" + "a" → "aa"
+
+Version 2:
+"A" + "a" → "Aa"
+Palindrome check:
+"Aa" == "aA" → False
