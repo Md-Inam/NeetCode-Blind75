@@ -17,7 +17,7 @@ But:
 
 
 A1)
-buy=prices[0]
+        buy=prices[0]
         max_profit=0
         for price in prices:
             if price<buy:
@@ -26,3 +26,15 @@ buy=prices[0]
             if profit>max_profit:
                 max_profit=profit
         return max_profit
+
+
+A2)
+buy = prices[0]
+        profit = 0
+        for price in prices:
+            if price < buy:
+                buy = price
+            else:
+                if price - buy > profit:
+                    profit = price - buy
+        return profit
