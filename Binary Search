@@ -1,0 +1,41 @@
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1. You must write an algorithm with O(log n) runtime complexity
+
+for i, num in enumerate(nums):
+    if num == target:
+        return i
+else:
+    return -1
+
+Binary Search Method
+
+# Initial Error: It never: Recalculates mid  , Compares again.
+left=0
+right=len(num)-1
+mid=(left+right) //  2
+if num[mid]==target:
+  return mid
+elif target<num[mid]:
+  right=mid-1
+elif target>num[mid]:
+  left=mid+1
+return num[mid]
+
+Correction:  
+Binary search is not “check middle and move left/right”
+Binary search is “keep checking middle UNTIL the search space disappears”
+That “keep” is a while loop.
+
+Code:
+
+left = 0
+right = len(nums) - 1
+while left <= right:
+    mid = (left + right) // 2
+    if nums[mid] == target:
+        return mid          # found → return index
+    elif target < nums[mid]:
+        right = mid - 1     # discard right half
+    else:
+        left = mid + 1      # discard left half
+
+return -1                  # target not found
