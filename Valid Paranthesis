@@ -11,14 +11,43 @@ Output: true        Output: true             Output: false      Output: true    
 
 A1)
 stack = []
-        pairs = {')': '(', ']': '[', '}': '{'}  
-        for ch in s:
-            if ch in '([{':          
+pairs = {')': '(', ']': '[', '}': '{'}  
+for ch in s:
+        if ch in '([{':          
                 stack.append(ch)
-            elif len(stack)==0:
+        elif len(stack)==0:
                 return False                
-            elif stack[-1]==pairs[ch]:
+        elif stack[-1]==pairs[ch]:
                 stack.pop()
-            else:
+        else:
                 return False
-        return len(stack) == 0
+return len(stack) == 0
+
+A2)
+stack=[]
+        pairs = {')': '(', ']': '[', '}': '{'}  
+        for ch in s:          
+            if ch in '([{':                  (Opening)
+                stack.append(ch)
+            else:                            (Closing)
+                if not stack:                (Closing Case 1: if closing is first elemnt of input)      
+                     return False
+                if stack[-1] == pairs[ch]:  
+                         stack.pop()
+                else:
+                    return False
+        return not stack
+
+
+
+
+Pattern 1: Reject on mismatch (what you already have)
+if stack[-1] != pairs[ch]:
+    return False
+stack.pop()
+
+Pattern 2: Accept on match (what you’re asking for)
+if stack[-1] == pairs[ch]:
+    stack.pop()
+else:
+    return False
