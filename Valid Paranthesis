@@ -9,4 +9,16 @@ Example 1:          Example 2:               Example 3:         Example 4:      
 Input: s = "()"     Input: s = "()[]{}"      Input: s = "(]"    Input: s = "([])"      Input: s = "([)]"
 Output: true        Output: true             Output: false      Output: true           Output: false
 
- 
+A1)
+stack = []
+        pairs = {')': '(', ']': '[', '}': '{'}  
+        for ch in s:
+            if ch in '([{':          
+                stack.append(ch)
+            elif len(stack)==0:
+                return False                
+            elif stack[-1]==pairs[ch]:
+                stack.pop()
+            else:
+                return False
+        return len(stack) == 0
