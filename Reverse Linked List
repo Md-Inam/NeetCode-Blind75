@@ -1,0 +1,25 @@
+LeetCode shows: [1,2,3,4,5]
+1 -> 2 -> 3 -> 4 -> 5 -> None
+Goal: [5,4,3,2,1]
+5 -> 4 -> 3 -> 2 -> 1 -> None
+Then Temp=curr.next (To Copy)
+and curr.next=None (Break the old link)
+Remember: In single linked list, the tail’s next MUST be None
+
+Core Idea
+
+Only one pointer changes per iteration: curr.next.
+prev = head of reversed portion so far.
+curr = node currently being reversed.
+temp = save the next node so we don’t lose the list.
+
+A)
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        curr, prev = head, None
+        while curr:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        return prev
