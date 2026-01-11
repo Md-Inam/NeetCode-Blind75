@@ -1,0 +1,58 @@
+You are given the heads of two sorted linked lists list1 and list2.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+Return the head of the merged linked list.
+
+A|)
+dummy=ListNode()
+        tail=dummy
+        l1=list1
+        l2=list2   # Initial List is Empty so Tail=dummy as dummy ->0->None
+        while l1 and l2:
+            if l1.val <= l2.val:
+                tail.next = l1   # attach smaller node
+                l1 = l1.next     # move l1 forward
+            else:
+                tail.next = l2
+                l2 = l2.next
+            tail = tail.next     # move tail to last node
+         
+        tail.next = l1 if l1 else l2 
+        return dummy.next
+
+A2)
+
+while l1 and l2:
+    if l1.val < l2.val:
+        tail.next = l1
+        l1 = l1.next
+    elif l2.val < l1.val:
+        tail.next = l2
+        l2 = l2.next
+    else:  # l1.val == l2.val
+        tail.next = l1
+        l1 = l1.next
+tail = tail.next
+return dummy.next
+
+elif: Only one branch executes per iteration
+No overwriting happens
+Merge stays correc
+
+Independent ifs run all the time. elif stops at the first true branch.
+
+Python allows one else per if. This alone makes your code invalid.
+if l1.val < l2.val:
+    ...
+else:
+    l2.val < l1.val   # this line does NOTHING
+    ...
+else:                # ❌ illegal
+    ...
+
+Because if / if means:
+“Check this”
+“Now check that too, even if the first already ran”
+
+One condition only? → if
+One of many conditions? → if / elif / else
+Multiple independent checks? → multiple if
